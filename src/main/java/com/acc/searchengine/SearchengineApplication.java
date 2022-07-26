@@ -1,4 +1,4 @@
-package com.acc.searchengine.searchengine;
+package com.acc.searchengine;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
