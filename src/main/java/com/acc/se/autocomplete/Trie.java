@@ -43,13 +43,4 @@ public class Trie {
         suggestHelper(lastNode, suggestions, buffer);
         return suggestions;
     }
-
-    public static void main(String[] args) {
-        Trie trie = new Trie();
-        List<String> words = Arrays.asList("hello", "dog", "hell", "cat", "a", "hel", "help", "helps", "helping", "dane", "doe", "doogle");
-        trie.insert(words);
-
-        System.out.println(trie.suggest("do"));
-    }
-
 }
