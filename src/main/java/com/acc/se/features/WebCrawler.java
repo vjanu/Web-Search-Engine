@@ -1,4 +1,6 @@
-package Engine;
+package com.acc.se.features;
+
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -17,7 +19,7 @@ import org.jsoup.select.Elements;
 public class WebCrawler {
 	private HashSet<String> links;
 	ArrayList<String> arr1 = new ArrayList<String>();
-
+	static String path = System.getProperty("user.dir");
 	public WebCrawler() {
 		links = new HashSet<String>();
 	}
@@ -63,7 +65,7 @@ public class WebCrawler {
 				String str = filename + ".html";
 
 				BufferedWriter my_writer = new BufferedWriter(
-						new FileWriter("D:\\Web-Search-Engine-main\\HTML files\\" + str));
+						new FileWriter(path+"\\src\\main\\resources\\static\\data\\html\\" + str));
 
 				// read each line from stream till end
 				String line;
