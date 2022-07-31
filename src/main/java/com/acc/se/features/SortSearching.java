@@ -1,31 +1,41 @@
 package com.acc.se.features;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import com.acc.se.dto.RankingPage;
+
 public class SortSearching {
 	
-	public static List<String> sortKey(Map<Integer, String> hm) {
-		Map<Integer, String> map=new HashMap<Integer, String>();  
-		List<String> filename = new ArrayList<String>();
+	public static List<RankingPage> sortKey(Map<Integer, String> hm) {
+		List<RankingPage> filename = new ArrayList<RankingPage>();
+		int i = 0;
 		
-		System.out.println("After Sorting");  
+		System.out.println("After Sorting");   
 		
-		TreeMap<Integer,String> tm=new  TreeMap<Integer,String> (hm);  
-		Iterator itr=tm.keySet().iterator();               
+		Map<Integer, String> reverseSortedMap = new TreeMap<Integer,String>(Collections.reverseOrder()); 
+		reverseSortedMap.putAll(hm);
+		
+		Iterator itr=reverseSortedMap.keySet().iterator();  
 		while(itr.hasNext())    
 		{    
+			i++;
+			RankingPage rp = new RankingPage();
 			int key=(int)itr.next();  
-			System.out.println("Occurrences:  "+key+"     File_name:   "+hm.get(key) +"\n");  
-			filename.add(hm.get(key));
+			System.out.println("Occurrences:  "+key+"     File_name:   "+hm.get(key)  +"\n"); 
+			
+			rp.setFileName(hm.get(key));
+			rp.setRank(i);
+			
+			filename.add(rp);
+			System.out.println("rank: "+rp.getRank());
+			if(i == 10) 
+				break;
 		}   
 		return filename;
-		//Map<Integer, String> reverseSortedMap = new TreeMap<Integer,String>(Collections.reverseOrder()); 
-		//reverseSortedMap.putAll(hm);
-		//System.out.println(reverseSortedMap);	 
 	}
 }

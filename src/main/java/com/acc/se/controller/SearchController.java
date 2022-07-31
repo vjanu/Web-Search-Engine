@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.acc.se.dto.RankingPage;
 import com.acc.se.features.SortSearching;
 import com.acc.se.features.SuggestKeywords;
 import com.acc.se.features.WordSearch;
@@ -30,21 +31,24 @@ public class SearchController {
 	public String getQuery(@RequestParam("searchkey") String query, Model model) throws IOException {
 		List<String> keywords = SuggestKeywords.findKeyWords(query);
 		HashMap<Integer, String> txtmap = new HashMap<Integer, String>();
+		
 		txtmap = WordSearch.wordSearch(query);
+
 		if (!txtmap.isEmpty()) {
-		List<String> files = new ArrayList<String>();
-		files = SortSearching.sortKey(txtmap);
+			List<RankingPage> files = new ArrayList<RankingPage>();
+
+			files = SortSearching.sortKey(txtmap);
 			model.addAttribute("results", files);
 			model.addAttribute("hasOutput", true);
-		} else {
+		} 
+		else {
 			model.addAttribute("hasOutput", false);
 			if (keywords.size() != 0) {
 				model.addAttribute("suggestedkeywords", keywords);
 				model.addAttribute("keyword", query);
-			} else {
+			} 
+			else 
 				model.addAttribute("alternatives", "");
-
-			}
 		}
 		return "search";
 	}

@@ -30,61 +30,53 @@
          </div>
       </form>
       <br/><br/><br/><br/><br/>
-	  
-	   <div th:if="${hasOutput}==true">
-	       <div class="container">
-         <div class="col-8 offset-2">
-            <h3 class="text-lg-center">Search Results</h3>
-            <br>
-         </div>
-         <div>
-            <center>
-               
-            </center>
-         <!--   <tr th:each="s:${results}">
-			
+      <div th:if="${hasOutput}==true">
+         <div class="container">
+            <div class="col-8 offset-2">
+               <h3 class="text-lg-center">Search Results</h3>
+               <br>
+            </div>
+            <div>
                <center>
-                  <td th:text="${s}"/>	-->	
-<center>
- <tr th:each="s:${results}">
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
- 
-    <h5 class="card-title"><td th:text="${s}"/></h5>
-	
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-
-  </div>
-</div>
-</tr>
-
-				  
                </center>
-            </tr>
+               <center>
+                  <tr th:each="s:${results}">
+                     <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                           <h6 class="card-subtitle mb-2 text-muted">
+                              Rank: 
+                              <td th:utext="${s.getRank()}"/>
+                           </h6>
+                           <h5 class="card-title"><td th:text="${s.getFileName()}"/></h5>
+                        </div>
+                     </div>
+                     <br>
+                  </tr>
+               </center>
+               </tr>
+            </div>
          </div>
       </div>
-	   </div>
-	  
-	  <div th:if="${hasOutput}==false">
-      <div class="container">
-         <div class="col-8 offset-2">
-            <h3 class="text-lg-center">We didn't find any results.</h3>
-            <br>
-         </div>
-         <div>
-            <center>
-               <b>
-                  <h4 th:text="'Here are some suggested keywords for \'' + ${keyword} + '\' '"></h4>
-               </b>
-            </center>
-            <tr th:each="w:${suggestedkeywords}">
+      <div th:if="${hasOutput}==false">
+         <div class="container">
+            <div class="col-8 offset-2">
+               <h3 class="text-lg-center">We didn't find any results.</h3>
+               <br>
+            </div>
+            <div>
                <center>
-                  <td th:text="${w}"/>				  
+                  <b>
+                     <h4 th:text="'Here are some suggested keywords for \'' + ${keyword} + '\' '"></h4>
+                  </b>
                </center>
-            </tr>
+               <tr th:each="w:${suggestedkeywords}">
+                  <center>
+                     <td th:text="${w}"/>				  
+                  </center>
+               </tr>
+            </div>
          </div>
       </div>
-	  </div>
       </div>
       </div>
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" crossorigin="anonymous"></script>

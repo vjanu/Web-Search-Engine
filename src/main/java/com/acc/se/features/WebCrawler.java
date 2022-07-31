@@ -1,6 +1,5 @@
 package com.acc.se.features;
 
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -20,6 +19,7 @@ public class WebCrawler {
 	private HashSet<String> links;
 	ArrayList<String> arr1 = new ArrayList<String>();
 	static String path = System.getProperty("user.dir");
+
 	public WebCrawler() {
 		links = new HashSet<String>();
 	}
@@ -55,30 +55,28 @@ public class WebCrawler {
 
 	public void saveUrl(final String filename, final String urlString) throws MalformedURLException, IOException {
 		{
-			
 
-				// Create myURL object
-				URL url = new URL(urlString);
-				BufferedReader my_readr = new BufferedReader(new InputStreamReader(url.openStream()));
+			// Create myURL object
+			URL url = new URL(urlString);
+			BufferedReader my_readr = new BufferedReader(new InputStreamReader(url.openStream()));
 
-				// Enter filename in which you want to download
-				String str = filename + ".html";
+			// Enter filename in which you want to download
+			String str = filename + ".html";
 
-				BufferedWriter my_writer = new BufferedWriter(
-						new FileWriter(path+"\\src\\main\\resources\\static\\data\\html\\" + str));
+			BufferedWriter my_writer = new BufferedWriter(
+					new FileWriter(path + "\\src\\main\\resources\\static\\data\\html\\" + str));
 
-				// read each line from stream till end
-				String line;
-				while ((line = my_readr.readLine()) != null) {
-					my_writer.write(line);
-				}
+			// read each line from stream till end
+			String line;
+			while ((line = my_readr.readLine()) != null) {
+				my_writer.write(line);
+			}
 
-				my_readr.close();
-				my_writer.close();
-				System.out.println("Successfully Downloaded.");			
+			my_readr.close();
+			my_writer.close();
+			System.out.println("Successfully Downloaded.");
 
 		}
 	}
-
 
 }
