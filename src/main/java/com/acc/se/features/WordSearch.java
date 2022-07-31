@@ -10,15 +10,16 @@ import java.util.Scanner;
 public class WordSearch {
 
     static String path = System.getProperty("user.dir");
-    static HashMap<String, Integer> userdata = new HashMap<String, Integer>();
+    static HashMap<Integer, String> txtmap = new HashMap<Integer, String>();
+    static HashMap<Integer, String> htmlmap = new HashMap<Integer, String>();
 
-    public static void mapdata(String str, int i)
+    public static void maptxt(String str, int i)
     {
-        userdata.put(str,i);
+        txtmap.put(i, str);
     }
-    public static void getdata()
+    public static void gettxt()
     {
-        System.out.println(userdata);
+        System.out.println(txtmap);
     }
 
     public static String txtfilename(int i) // function to return file name
@@ -65,7 +66,7 @@ public class WordSearch {
                 {
                     System.out.println("The given word is present for " + count + " Times in the file");
                     System.out.println(txtfilename(i)+"\n");
-                    mapdata(htmlfilename(i),count);
+                    maptxt(htmlfilename(i),count);
                 } else {
                     System.out.println("The given word is not present in the file");
                 }
@@ -83,7 +84,7 @@ public class WordSearch {
         System.out.println("Enter the Word to Search");
         String input = ipobj.nextLine();
         wordSearch(input);
-        getdata();
+        gettxt();
 
 
     }
