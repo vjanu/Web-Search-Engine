@@ -22,13 +22,12 @@ public class WordOccurr {
     }
 
     public static void writeInFile(String userip) {
-        try(FileWriter fileWriter = new FileWriter(path + "\\src\\main\\resources\\static\\data\\occurr\\occurr.txt", true);
+        try(FileWriter fileWriter = new FileWriter(path + "\\src\\main\\resources\\static\\data\\ouccur\\occurr.txt", true);
             PrintWriter printWriter = new PrintWriter(fileWriter);) {
-
             printWriter.println(userip);
         }
         catch (IOException e) {
-            System.out.println("exception occurred" + e);
+            System.out.println("exception occurred \n" + e);
         }
     }
 }
