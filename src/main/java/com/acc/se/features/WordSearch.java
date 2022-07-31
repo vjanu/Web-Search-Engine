@@ -24,7 +24,7 @@ public class WordSearch {
 
 	public static String txtfilename(int i) // function to return file name
 	{
-		File folder = new File(path+"\\src\\main\\resources\\static\\data\\text");
+		File folder = new File(path+"\\src\\main\\resources\\static\\data\\text\\");
 		String[] path;
 		path = folder.list();
 		return path[i];
@@ -32,7 +32,7 @@ public class WordSearch {
 
 	public static String htmlfilename(int i) // function to return file name
 	{
-		File folder = new File(path+"\\src\\main\\resources\\static\\data\\html");
+		File folder = new File(path+"\\src\\main\\resources\\static\\data\\html\\");
 		String[] path;
 		path = folder.list();
 		return path[i];
@@ -41,7 +41,9 @@ public class WordSearch {
 	public static HashMap<Integer, String> wordSearch(String input) throws IOException // function to search for word in
 																						// ALL text file
 	{
-		File folder_ = new File(path+"\\src\\main\\resources\\static\\data\\text");
+		HashMap<Integer, String> finalhtmlmap = new HashMap<Integer, String>();
+		
+		File folder_ = new File(path+"\\src\\main\\resources\\static\\data\\text\\");
 		File[] file_list = folder_.listFiles();
 		String[] words = null; // Intialize the word Array
 		String str;
@@ -50,7 +52,7 @@ public class WordSearch {
 
 		for (int i = 0; i < file_list.length; i++) {
 			if (file_list[i].isFile()) {
-				FileReader file_reader = new FileReader(path+"\\src\\main\\resources\\static\\data\\text" + file_list[i].getName());
+				FileReader file_reader = new FileReader(path+"\\src\\main\\resources\\static\\data\\text\\" + file_list[i].getName());
 				BufferedReader buff = new BufferedReader(file_reader); // Creation of BufferedReader object
 
 				while ((str = buff.readLine()) != null) // Reading Content from the file
@@ -67,13 +69,14 @@ public class WordSearch {
 				{
 					System.out.println("The given word is present for " + count + " Times in the file");
 					System.out.println(txtfilename(i) + "\n");
-					return maptxt(htmlfilename(i), count);
+					finalhtmlmap = maptxt(htmlfilename(i), count);
+				     
 				}
-
+				count = 0;
 				file_reader.close();
 			}
 		}
-		return null;
+		return finalhtmlmap;
 	}
 
 	public static void main(String[] args) throws IOException {

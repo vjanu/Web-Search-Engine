@@ -34,18 +34,31 @@
 	   <div th:if="${hasOutput}==true">
 	       <div class="container">
          <div class="col-8 offset-2">
-            <h3 class="text-lg-center">results.</h3>
+            <h3 class="text-lg-center">Search Results</h3>
             <br>
          </div>
          <div>
             <center>
-               <b>
-                  <h4 th:text="'Here are some suggested keywords for \'' + ${keyword} + '\' '"></h4>
-               </b>
+               
             </center>
-            <tr th:each="w:${results}">
+         <!--   <tr th:each="s:${results}">
+			
                <center>
-                  <td th:text="${w}"/>				  
+                  <td th:text="${s}"/>	-->	
+<center>
+ <tr th:each="s:${results}">
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+ 
+    <h5 class="card-title"><td th:text="${s}"/></h5>
+	
+    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+
+  </div>
+</div>
+</tr>
+
+				  
                </center>
             </tr>
          </div>
