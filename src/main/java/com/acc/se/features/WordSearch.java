@@ -10,10 +10,7 @@ public class WordSearch {
 
     static String path = System.getProperty("user.dir");
 
-    public WordSearch()
-    {
-        WordOccurr.createUserFile();
-    }
+
 
     public static String filename(int i) // function to return file name
     {
@@ -25,7 +22,7 @@ public class WordSearch {
 
     public static void wordSearch(String input) throws IOException // function to search for word in ALL text file
     {
-        File folder_ = new File("E:\\setext\\"); //Creation of File Descriptor for input file
+        File folder_ = new File("E:\\setext\\");
         File[] file_list = folder_.listFiles();
         String[] words = null;  //Intialize the word Array
         String str;
@@ -67,7 +64,6 @@ public class WordSearch {
         Scanner ipobj = new Scanner(System.in);
         System.out.println("Enter the Word to Search");
         String input = ipobj.nextLine();
-        WordOccurr.writeInFile(input);
         wordSearch(input);
     }
 
