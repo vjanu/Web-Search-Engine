@@ -30,6 +30,7 @@ public class SortSearching {
 			
 			rp.setFileName(hm.get(key));
 			rp.setRank(i);
+			rp.setOccurances(key);
 			
 			filename.add(rp);
 			System.out.println("rank: "+rp.getRank());
