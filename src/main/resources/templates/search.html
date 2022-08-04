@@ -15,13 +15,13 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
          <div class="container-fluid">
             <img src=".\images\ebay_new_alt.ico" alt="" width="60" height="60" class="d-inline-block align-text-top">
-            <a class="navbar-brand" href="http://localhost:8010/">Ebay Search Engine</a>
+            <a class="navbar-brand" href="http://localhost:8081/">Ebay Search Engine</a>
          </div>
          </div>
          </div>
       </nav>
       <br/>
-      <form name="textForm" id="textForm" action="" method="post">
+      <form name="textForm" id="textForm" action="" method="get">
          <div class="wrapper">
             <input type="text" class="input"   name="searchkey"  placeholder="Search Keyword in Ebay">
             <button class="searchbtn" type="submit"  onclick="search()">
@@ -33,7 +33,8 @@
       <div th:if="${hasOutput}==true">
          <div class="container">
             <div class="col-8 offset-2">
-               <h3 class="text-lg-center">Search Results</h3>
+               
+               <h3 class="text-lg-center" th:text="'Search Results for : \'' + ${keyword} + '\' '"></h3>
                <br>
             </div>
             <div>

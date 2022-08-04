@@ -38,7 +38,8 @@ body{
 }
 
 .searchbtn {
-    background: #ffec00;
+    background: #0000ff;
+    color: white;
     width: 14%;
     border-radius: 5px;
     position: relative;

@@ -40,6 +40,7 @@ public class SearchController {
 			files = SortSearching.sortKey(txtmap);
 			model.addAttribute("results", files);
 			model.addAttribute("hasOutput", true);
+			model.addAttribute("keyword", query);
 		} 
 		else {
 			model.addAttribute("hasOutput", false);
